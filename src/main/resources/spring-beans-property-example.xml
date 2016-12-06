@@ -15,7 +15,7 @@
 	<!--  -->
 	<bean id="discountFactoryConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="location">
-			<value>classpath:discount.properties</value>
+			<value>classpath:discounts.properties</value>
 		</property>
 		<property name="ignoreResourceNotFound" value="true"/>
 		<property name="ignoreUnresolvablePlaceholders" value="true"/>

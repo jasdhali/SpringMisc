@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+		<context:annotation-config/>
+	<bean id="helloWorldService" class="com.programcreek.entrylevel.services.HelloWorldService">
+		<property name="name" value="Program Creek Readers" />
+	</bean>
+
+	<!-- Providing explicit values to setter methods -->
+	<bean name="sequenceGenerator"  class="com.apress.springrecipes.sequence.SequenceGenerator">
+		<!-- <property name="prefix">
+			<value>30</value>
+		</property>
+		<property name="suffix">
+			<value>A</value>
+		</property>
+		-->
+		<property name="initial">
+			<value>100000</value>
+		</property> 
+		<constructor-arg value="30" type="java.lang.String"/>
+		<constructor-arg value="100000" type="int"/>
+		<property name="suffix" value="ABC"/>
+	</bean>
+
+	<!-- Same bean being instantiated using constructor arguments. -->
+
+	<!-- 
+	<bean id="seqGenerator_1" class="com.apress.springrecipes.sequence.SequenceGenerator">
+		<constructor-arg>
+			<value type="java.lang.String">30</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value type="java.lang.String">B</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value type="java.lang.Integer">10001</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value type="java.lang.Integer">23</value>
+		</constructor-arg>
+	</bean>
+	 -->
+	<!-- Same bean being instantiated using shortcut way of setting properties. -->
+	<bean id="seqGenerator_2" class="com.apress.springrecipes.sequence.SequenceGenerator">
+		<property name="prefix" 	value="40"/>
+		<!-- <property name="suffix" 	value="XX"/> -->
+		<property name="initial" 	value="-201"/>
+		<property name="counter" 	value="66"/>
+	</bean>
+	<!-- Same bean being instantiated using shortcut way of setting constructor args. -->
+	<bean id="seqGenerator_3" class="com.apress.springrecipes.sequence.SequenceGenerator">
+	    
+		<property name="initial">
+			<value>100000</value>
+		</property>
+		<constructor-arg name="prefix" value="50"/>
+		<constructor-arg name="suffix" value="YY"/>
+		<constructor-arg name="initial" value="-301"/>
+		<constructor-arg name="counter" value="77"/>
+	</bean>
+	
+	<!-- Same bean being instantiated using p schema. -->
+	<bean id="seqGenerator_4" class="com.apress.springrecipes.sequence.SequenceGenerator" p:counter="88" p:prefix="55" p:initial="-401" p:suffix="ZZ">
+		<constructor-arg name="prefix" value="50"/>
+		<constructor-arg name="suffix" value="YY"/>
+		<constructor-arg name="initial" value="-301"/>
+		<constructor-arg name="counter" value="77"/>
+	</bean>
+</beans>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	<context:annotation-config/>
+	<context:component-scan base-package="com.apress.springrecipes.sequence"/>
+	<bean id="prefix" class="java.lang.String">
+		<constructor-arg value="A"/>
+	</bean>	
+	<bean id="suffix" class="java.lang.String">
+		<constructor-arg value="A"/>
+	</bean>
+	
+	<bean id="initial" class="java.lang.Integer">
+		<constructor-arg value="99901002"/>
+	</bean>
+	
+	<!-- Providing explicit values to setter methods -->
+	<bean name="sequenceGenerator" class="com.apress.springrecipes.sequence.SequenceGenerator">
+	    	<!-- <property name="initial" value="99"/>
+	    	<property name="suffix" value="A"/> -->	    	
+	    	<!-- <property name="prefixGenerator" ref="prefixGenerator"/> -->
+	</bean>
+	    
+	<bean id="prefixGenerator" class="com.apress.springrecipes.sequence.DatePrefixGenerator">
+		<property name="pattern" value="yyyyMMdd"/>
+	</bean>
+	
+	<bean id="yearPrefixGenerator" class="com.apress.springrecipes.sequence.DatePrefixGenerator">
+		<property name="pattern" value="yyyy"/>
+	</bean> 
+	
+	<!-- <bean 
+	    	name="beanPostProcessor" 
+	    	class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor">
+	    	<property name="requiredAnnotationType">
+	    	    <value>com.apress.annotations.Mandatory</value>
+	    	</property>
+	</bean> -->
+	<bean name="person" class="com.apress.springrecipes.misc.Person">
+	    <property name="firstName" value="Jaspal"/>
+	    <property name="lastName" value="Singh"/> 
+	    <!-- <property name="dob" ref="miscDOB"/> -->
+	</bean>
+	
+	<bean name="newPerson" class="com.apress.springrecipes.misc.NewPerson">
+	    <property name="firstName" value="Jaspal"/>
+	    <property name="lastName" value="Singh"/> 
+	    <!-- <property name="dob" ref="miscDOB"/> -->
+	</bean>
+	
+	<bean name="person1" class="com.apress.springrecipes.misc.Person" parent="person" scope="prototype">
+	    <property name="firstName" value="Jagpal"/>
+	</bean>
+	
+	<bean name="dob1" class="java.util.Date">
+	    <!-- 
+	    	<constructor-arg type="java.lang.Long" value="635904000000"/> -->
+	    	<property name="year" value="14"/>
+	    	<property name="month" value="01"/>
+	    	<property name="date" value="18"/>
+	</bean>
+	
+	<bean name="dob2" class="java.util.Date">
+	    	<property name="year" value="15"/>
+	    	<property name="month" value="02"/>
+	    	<property name="date" value="19"/>
+	</bean>
+	
+	<!-- <bean name="dob2" class="java.util.Date">
+	    	<constructor-arg   value="1220227200"/>
+	</bean> -->
+	
+	<bean name="skill" class="com.apress.springrecipes.misc.Skill">
+	    <property name="skillName" value="Java"></property>
+	</bean>
+	
+	<bean name="child1" class="com.apress.springrecipes.misc.Child">
+		<property name="firstName" value="Child_1"/>    
+	</bean>
+	<bean name="child2" class="com.apress.springrecipes.misc.Child">
+		<property name="firstName" value="Child_2"/>    
+	</bean>
+</beans>

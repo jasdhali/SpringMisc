@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="aaa" class="springrecipes.chapter02.ProductCreator"
+		factory-method="createProduct">
+		<constructor-arg value="aaa" />
+	</bean>
+
+	<bean id="cdrw" class="springrecipes.chapter02.ProductCreator"
+		factory-method="createProduct">
+		<constructor-arg value="cdrw" />
+	</bean>
+	
+<!-- 
+	<bean id="datePrefixGenerator" class="com.apress.springrecipes.sequence.DatePrefixGenerator">
+		<property name="pattern" value="yyyyMMdd" />
+	</bean>
+
+	Providing explicit values to setter methods
+	<bean name="sequenceGenerator" class="com.apress.springrecipes.sequence.SequenceGenerator">
+		<property name="prefixGenerator" ref="datePrefixGenerator" />
+		<property name="suffix">
+			<value>A</value>
+		</property>
+		<property name="initial">
+			<value>100000</value>
+		</property>
+	</bean>
+
+	same as above using p schema
+	<bean name="sequenceGenerator_p" class="com.apress.springrecipes.sequence.SequenceGenerator"
+		p:suffix="A" p:prefixGenerator-ref="datePrefixGenerator" p:initial="10000"/>
+
+
+	same as above using collection configuration element
+	Created By - Jaspal; Date 5/23/2015;
+	<bean name="sequenceGenerator_collect" class="com.apress.springrecipes.sequence.SequenceGenerator">
+		<property name="prefixGenerator" ref="datePrefixGenerator" />
+		<property name="initial" value="10000000" />
+		<property name="suffixes">
+			<list>
+				<value>5</value>
+				<value>10</value>
+				<value>15</value>
+			</list>
+		</property>
+	</bean> -->
+</beans>

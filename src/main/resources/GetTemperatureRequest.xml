@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetTemperatureRequest xmlns="http://springrecipes.apress.com/weather/schemas">
+    <city>Houston</city>
+    <date>2007-12-01</date>
+    <date>2007-12-08</date>
+    <date>2007-12-15</date>	
+</GetTemperatureRequest>
